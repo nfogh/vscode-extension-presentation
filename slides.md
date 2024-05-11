@@ -178,3 +178,75 @@ Legacy build systems often puts artifacts in odd places.
 An extension can search for these and return the paths.
 
 This is especially useful in launch.json
+
+---
+
+# My custom build system
+
+## Terribuild
+
+ - Made like most custom build system with best intentions
+ - Emulated real environment (I didn't want to spend too much time on it)
+   - All the warts of a regular custom-built app
+
+ - Can build either libraries or programs
+ - Can define dependencies between programs and libraries
+ - Can download toolchains
+ - Can download dependencies
+
+---
+
+# Terribuild
+
+ - Configuration in terribuild.json
+
+terribuild.json
+ ```json
+ {
+    "packages": {
+        "build_tools": {
+            "url": "https://toolchains.bootlin.com/downloads/releases/toolchains/x86-64/tarballs/x86-64--glibc--stable-2021.11-5.tar.bz2",
+            "sha256": "6fe812add925493ea0841365f1fb7ca17fd9224bab61a731063f7f12f3a621b0",
+            "root": "x86-64--glibc--stable-2021.11-5",
+            "compiler": "x86_64-linux-g++",
+            "linker": "x86_64-linux-g++"
+        },
+        "gtest": {
+            "url": "https://github.com/google/googletest/archive/refs/tags/v1.14.0.tar.gz",
+            "ldflags": "-lgtest -lgtest_main",
+            "include": "include"
+        }
+    }
+ ```
+
+---
+
+ # Terribuild
+
+ ```json
+    "cflags": "-O2 -Wall -Werror -Wextra",
+
+    "libraries": {
+        "libhello_world": {
+            "sources": ["src/libhello_world/src/hello_world.cpp"],
+            "dependencies": ["boost"]
+        }
+    },
+    "programs": {
+        "hello_world": {
+            "sources": ["src/main.cpp"],
+            "ldflags": ["-L.", "-lhello_world"],
+            "cflags": ["-Isrc/libhello_world/include"],
+            "dependencies": ["libhello_world"]
+        },
+        "hello_world_test": {
+            "sources": ["test/hello_world_test.cpp"],
+            "ldflags": ["-Lpackages/gtest/googletest-1.14.0/build/lib", "-lhello_world", "-L.", "-lgtest", "-lgtest_main"],
+            "cflags": ["-Ipackages/gtest/googletest-1.14.0/googletest/include", "-Isrc/libhello_world/include"],
+            "dependencies": ["libhello_world", "gtest"]
+        }
+    }
+
+ ```
+
+---
