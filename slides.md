@@ -3,9 +3,7 @@ layout: cover
 highlighter: shiki
 ---
 
-# Replacing legacy IDEs with VS Code
-
-By playing around with extensions
+# Writing VS Code extensions for fun and pofit
 
 <div class="uppercase text-sm tracking-widest">
 Nikolaj Fogh
@@ -14,18 +12,139 @@ Nikolaj Fogh
 <div class="abs-bl mx-14 my-12 flex">
   <img src="/images/vscode-icon.png" class="h-8" />
   <div class="ml-3 flex flex-col text-left">
-    <div><b>Copenhagen C++ meetup</b></div>
-    <div class="text-sm opacity-50">Apr. 29th, 2024</div>
+    <div><b>Meeting C++ 2024</b></div>
+    <div class="text-sm opacity-50">Nov. 14th, 2024</div>
   </div>
 </div>
 
 ---
+---
 
-# Legacy IDEs
+# Why bring this up at a C++ conference?
+This has nothing to do with C++
 
-- Often feels like working in the middle ages
-- Doesn't offer much customization
+A bit about me
 
+<v-clicks>
+
+ - Mostly self-taught
+ - Some periods in time, you feel you get a learning boost
+ - For me, watching presentations about C++
+ - I wanted to give something back to the community
+ - This is something I have had success with
+
+</v-clicks>
+
+---
+---
+
+# Why bring this up at a C++ conference?
+This has nothing to do with C++
+
+<v-clicks depth=2>
+
+ - A lot of time is spent on non-coding tasks
+   - Configuring builds
+   - Configuring debugging
+   - Tedious refactoring tasks
+ - Often done by automation tools
+
+</v-clicks>
+
+<!--
+  We use Ctrl-shift-b (or similar to build). Or we build on every save.
+
+ - Everyone has a different workflow
+-->
+
+---
+---
+# Why bring this up at a C++ conference?
+This has nothing to do with C++
+
+A bit of history 
+
+<v-clicks>
+
+- We were stuck with a legacy IDE + an in-house built build-system
+ - Integration between the two was very poor
+ - Debugging effectively non-existing
+ - Some developers were trying out VSCode, but integration was even poorer.
+
+</v-clicks>
+
+<!--
+  We have aound 50-100 different build-targets
+-->
+
+---
+---
+# Why bring this up at a C++ conference?
+This has nothing to do with C++
+
+Tooling is importart
+
+<v-clicks>
+
+ - Talk: C++ Painkillers for C++ developers
+ - This talk is very much about C++ painkillers
+ - Allows your developers to focus on their main task
+
+</v-clicks>
+
+
+---
+---
+# Why bring this up at a C++ conference?
+This has nothing to do with C++
+
+A bit of history
+
+<v-clicks depth=2>
+
+ - We started playing a bit around customizing VS Code
+   - Task configurations
+   - Launch configurations
+ - We got pretty far but were still limited
+ - Task and launch configurations are pretty static
+   - Suitable for 1-2 components. Not 50-100
+ - We wanted 1-click builds of current component
+ - We wanted 1-click debugging
+   - Autodetect current component
+   - Autodetect shared library paths
+   - Automatic upload of component + dependencies to target
+   - Automatic debugging invocation
+  - We wanted various quality-of-life improvements
+
+</v-clicks>
+
+<!--
+Show a task configuration
+Show a launch configuration
+  We have aound 50-100 different build-targets
+-->
+
+---
+---
+# Why bring this up at a C++ conference?
+This has nothing to do with C++
+
+<v-clicks depth=2>
+
+- Did we succeed?
+  - Yes
+
+- Was it hard?
+  - No
+  - It was FUN
+
+</v-clicks>
+
+<!--
+ - I get immense joy out of delivering tools people like to use
+-->
+
+---
 ---
 
 # Why VS Code
@@ -39,8 +158,13 @@ Nikolaj Fogh
 - Very configurable. Loads of extensions available to add functionality.
 - Using extensions, VS code can be made into an IDE.
 - Familiar interface for multiple programming languages.
+- Takeaways not specific to vscode.
 
 </v-clicks>
+
+<!--
+- This talk is specific to vscode, but most of the things should be applicable to any (properly extendable) tool
+-->
 
 ---
 
@@ -49,7 +173,7 @@ What is in it for me?
 
 <v-clicks>
 
-- Integrate with a custom build system
+- Integrate with custom automation tools
 - Replace legacy IDEs
 - Automate repetitive tasks
 
@@ -63,10 +187,15 @@ What is in it for me?
 
 <v-clicks>
 
-- Learn another programming language & ecosystem (npm / typescript)
+- Learn another programming language & ecosystem (typescript / npm)
 - Have fun!
 
 </v-clicks>
+
+<!--
+- Start with the low-hanging fruit.
+- It doesn't have to be big complicated tool integrations (cmake / debugger support etc.)
+-->
 
 ---
 
@@ -104,6 +233,14 @@ Just follow the guide here: https://code.visualstudio.com/api/get-started/your-f
     Gives us C++ test framework integrations
 
 </v-clicks>
+
+---
+
+# Legacy IDEs
+
+- Often feels like working in the middle ages
+- Doesn't offer much customization
+
 
 ---
 
