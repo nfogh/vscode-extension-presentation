@@ -158,6 +158,7 @@ This has nothing to do with C++
 - Very configurable. Loads of extensions available to add functionality.
 - Using extensions, VS code can be made into an IDE.
 - Familiar interface for multiple programming languages.
+- Extension API fairly well documented (w. examples)
 - Takeaways not specific to vscode.
 
 </v-clicks>
@@ -205,7 +206,7 @@ What is in it for me?
 
 ---
 
-## Let's try to create an extension
+## Let's try to create a hello world extension
 Just follow the guide here: https://code.visualstudio.com/api/get-started/your-first-extension
 
 <v-clicks>
@@ -229,8 +230,6 @@ Just follow the guide here: https://code.visualstudio.com/api/get-started/your-f
 
 1. Microsoft VS Code C/C++ Tools <img src="/images/extension-cpp.png" />
     Gives us syntax highlighting, compilation and debugging support
-2. C++ Test Mate <img src="/images/extension-testmate.png" />
-    Gives us C++ test framework integrations
 
 </v-clicks>
 
@@ -288,14 +287,31 @@ tasks.json, launch.json, settings.json
 
 </div>
 
+---
+---
+# Example
 
+Using the VS Code documentation for C++ development
+
+https://code.visualstudio.com/docs/cpp/config-linux
+
+---
+---
+# Let's try to create a build task
+
+---
+---
+# Let's try to create a launch configuration
+
+---
 ---
 
 # Using commands to fill out vscode .json files
 
 <v-clicks>
 
-- Uses VS code commands
+- Uses VS code commands to dynamically populate configuations
+- _This_ is where we can define custom commands in our extension
 
 </v-clicks>
 
