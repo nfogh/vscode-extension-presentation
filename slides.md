@@ -19,19 +19,40 @@ Nikolaj Fogh
 
 ---
 ---
+# Contents
+
+<v-clicks>
+
+ - Why bring this up at a C++ conference?
+ - IDE extensions as a "painkiller"
+ - Why VS code
+ - Hello world
+ - Learning another language (TypeScript)
+ - Replacing legacy IDEs
+ - Telemetry and security
+
+</v-clicks>
+
+---
+---
 
 # Why bring this up at a C++ conference?
 This has nothing to do with C++
 
+
+<v-click>
+
 A bit about me
+
+</v-click>
 
 <v-clicks>
 
  - Mostly self-taught
  - Some periods in time, you feel you get a learning boost
- - For me, watching presentations about C++
- - I wanted to give something back to the community
- - This is something I have had success with
+ - For me, watching presentations about C++ (on YouTube)
+ - I wanted to give something back to the community (but what?)
+ - The topic I will talk about, is something I have had success with
 
 </v-clicks>
 
@@ -47,6 +68,7 @@ This has nothing to do with C++
    - Configuring builds
    - Configuring debugging
    - Tedious refactoring tasks
+   - Boilerplate code
  - Often done by automation tools
 
 </v-clicks>
@@ -62,14 +84,31 @@ This has nothing to do with C++
 # Why bring this up at a C++ conference?
 This has nothing to do with C++
 
-A bit of history 
+Tooling is importart
+
+<v-clicks>
+
+ - Keynote: C++ Painkillers for C++ developers
+ - This talk is very much about C++ painkillers
+ - Allows your developers to focus on their main task
+
+</v-clicks>
+
+<!--
+  At cppnow by Anastasia Kazakova
+-->
+
+---
+---
+# IDE extensions as a painkiller
+A case study 
 
 <v-clicks>
 
 - We were stuck with a legacy IDE + an in-house built build-system
  - Integration between the two was very poor
  - Debugging effectively non-existing
- - Some developers were trying out VSCode, but integration was even poorer.
+ - A surprising amount of developers make do with whats available
 
 </v-clicks>
 
@@ -77,28 +116,11 @@ A bit of history
   We have aound 50-100 different build-targets
 -->
 
----
----
-# Why bring this up at a C++ conference?
-This has nothing to do with C++
-
-Tooling is importart
-
-<v-clicks>
-
- - Talk: C++ Painkillers for C++ developers
- - This talk is very much about C++ painkillers
- - Allows your developers to focus on their main task
-
-</v-clicks>
-
 
 ---
 ---
-# Why bring this up at a C++ conference?
-This has nothing to do with C++
-
-A bit of history
+# IDE extensions as a painkiller
+A case study 
 
 <v-clicks depth=2>
 
@@ -126,15 +148,15 @@ Show a launch configuration
 
 ---
 ---
-# Why bring this up at a C++ conference?
-This has nothing to do with C++
+# IDE extensions as a painkiller
+A case study 
 
 <v-clicks depth=2>
 
 - Did we succeed?
   - Yes
 
-- Was it hard?
+- Was it hard to do?
   - No
   - It was FUN
 
@@ -174,7 +196,7 @@ What is in it for me?
 
 <v-clicks>
 
-- Integrate with custom automation tools
+- Integrate IDE with custom automation tools
 - Replace legacy IDEs
 - Automate repetitive tasks
 
@@ -196,13 +218,10 @@ What is in it for me?
 <!--
 - Start with the low-hanging fruit.
 - It doesn't have to be big complicated tool integrations (cmake / debugger support etc.)
+- Typescript is great, until it isn't, but it is mainly great
+- Npm is great, look what I can do
+- On the other hand, look what I can do (lots of dependencies - security issues)
 -->
-
----
-
-# The VSCode window
-
-<img src="/images/vscode-ide.png" class="w150" />
 
 ---
 
@@ -224,110 +243,171 @@ Just follow the guide here: https://code.visualstudio.com/api/get-started/your-f
 </v-clicks>
 
 ---
+---
 
-# VS Code extensions for C/C++ development
+# Let's make a useful command
+Automate repetitive tasks
+
+## Text-editor commands
+
+- Advanced search-and-replace
+- Example from real life
+  - Hotkey to autocomplete include paths
+
+````md magic-move
+```cpp
+#include "lib1.h"
+#include "lib2.h"
+int main()
+{
+
+}
+```
+```cpp
+#include "Component1/shared/lib1.h"
+#include "Component2/shared/lib2.h"
+int main()
+{
+
+}
+```
+````
+
+---
+---
+# Let's make a useful command
+Learning a new language?
+
 <v-clicks>
 
-1. Microsoft VS Code C/C++ Tools <img src="/images/extension-cpp.png" />
-    Gives us syntax highlighting, compilation and debugging support
+You need 2 things:
+
+</v-clicks>
+
+<v-clicks>
+
+1. A fun project
+2. Code examples and a mentor
+
+</v-clicks>
+
+<br/>
+<h2 v-click>ChatGPT can be both of those things</h2>
+
+<v-clicks>
+
+- Has deep knowledge about TypeScript
+- Has knowledge about the vscode API
+- You can ask it to elaborate on solutions
+- This advice comes with all the caveats against ChatGPT
+
+</v-clicks>
+
+<v-clicks>
+
+## Live demo
 
 </v-clicks>
 
 ---
+layout: center
+---
 
-# Legacy IDEs
+# Wasn't that fun?
+
+<!--
+This was just a simple example. You can do all sorts of things.
+- Read from databases ex.
+-->
+
+---
+
+# Back to our case study
+
+<v-clicks>
+
+## Legacy IDEs
 
 - Often feels like working in the middle ages
 - Doesn't offer much customization
 
+## Custom build systems
 
----
-
-# Custom / legacy build systems
-
-<v-clicks>
-
-- Executed via the command-line
 - Can be difficult to understand and customize
 - Puts build artifacts in "odd" places
-- No integration with debugging and test-runner tools
+- No integration with industry standard tools
 
 </v-clicks>
 
 ---
-clicks: 6
+clicks: 4
 ---
 # How can we integrate with VS Code
 
-tasks.json, launch.json, settings.json
+tasks.json, launch.json
 
 <div class="grid grid-cols-2 gap-x-4 gap-y-4">
 
 <div>
   <div v-click="1">- Building can be done by defining a task in tasks.json</div>
-  <div v-click="4" class="my-auto leading-6 text-base opacity-75">    - Needs to know paths and command-line arguments</div>
+  <div v-click="3" class="my-auto leading-6 text-base opacity-75">    - Needs to know paths and command-line arguments</div>
 </div>
 
-<div v-click="1"><img src="/images/tasks-cppbuild.png" rounded shadow class="w70" /></div>
+<div v-click="1"><img src="/images/tasks-cppbuild.png" rounded shadow class="w100" /></div>
 
 <div>
   <div v-click="2">- Debugging can be done by defining a launch configuration in launch.json</div>
-  <div v-click="5" class="my-auto leading-6 text-base opacity-75">    - Needs to know the debugger we want to use, and where to find debugging symbols</div>
-  <div v-click="5" class="my-auto leading-6 text-base opacity-75">    - For remote debugging, needs to upload dependent files</div>
+  <div v-click="4" class="my-auto leading-6 text-base opacity-75">    - Needs to know the executable path and where to find debugging symbols</div>
+  <div v-click="4" class="my-auto leading-6 text-base opacity-75">    - For remote debugging, needs to upload dependent files before invoking debugger</div>
 </div>
 
-<div v-click="2"><img src="/images/launch-debug.png" rounded shadow class="w70" /></div>
-
-<div>
-  <div v-click="3">- Test-runner tools can be enabled by a suitable settings.json</div>
-  <div v-click="6" class="my-auto leading-6 text-base opacity-75">    - In this case, we use TestMate.</div>
-</div>
-
-<div v-click="3"><img src="/images/tasks-cppbuild.png" rounded shadow class="w70" /></div>
+<div v-click="2"><img src="/images/launch-debug.png" rounded shadow class="w100" /></div>
 
 </div>
 
 ---
 ---
-# Example
+# Let's try to create a build task and a launch configuration
 
-Using the VS Code documentation for C++ development
-
-https://code.visualstudio.com/docs/cpp/config-linux
-
----
----
-# Let's try to create a build task
-
----
----
-# Let's try to create a launch configuration
-
----
----
-
-# Using commands to fill out vscode .json files
-
-<v-clicks>
-
-- Uses VS code commands to dynamically populate configuations
-- _This_ is where we can define custom commands in our extension
-
-</v-clicks>
-
----
-
-# Text-editor commands
-
-- Advanced search-and-replace
-    - Example: Change include path to full paths
 
 ---
 
 # Resolving files and paths for launch.json and tasks.json
 
-Legacy build systems often puts artifacts in odd places.
+ - Works well for trivial cases
+ - Not flexible enough for more advanced cases
+ - More advanced cases needs
+   - Task providers
+   - Debugger extensions
 
-An extension can search for these and return the paths.
+---
 
-This is especially useful in launch.json
+# Visualization
+
+ - Tree views
+
+---
+
+# Telemetry and security
+The ugly side
+
+<h2 v-click>Telemetry</h2>
+
+<v-clicks>
+
+ - VS Code sends telemetry by default
+ - Many extensions also send telemetry
+ - You are the product
+
+</v-clicks>
+
+<h2 v-click>Security</h2>
+
+<v-clicks>
+
+ - It is _very_ easy to publish extensions to the marketplace
+ - It is _very_ easy to install new extensions
+ - Be careful which extensions you install
+ - Maybe run a private extension marketplace
+
+</v-clicks>

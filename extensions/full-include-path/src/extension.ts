@@ -10,18 +10,24 @@ async function makeIncludeFullPath(editor: vscode.TextEditor, edit: vscode.TextE
 		const workspaceFolder = vscode.workspace.getWorkspaceFolder(editor.document.uri);
 		if (workspaceFolder) {
 			// Search fo the file in the workspace
-			const fullPaths = glob.globSync(`${workspaceFolder.uri.fsPath}/**/${includePath}`);
+			const fullPaths = (await glob.glob(`${workspaceFolder.uri.fsPath}/**/${includePath}`))
+				.map(val => vscode.workspace.asRelativePath(val, false));
 			if (fullPaths.length === 0) {
 				vscode.window.showErrorMessage(`Unable to find file ${includePath}`);
 				return;
 			}
 			if (fullPaths.length > 1) {
-				vscode.window.showErrorMessage(`Multiple files found for ${includePath}`);
+				const selected = await vscode.window.showQuickPick(fullPaths, { canPickMany: false });
+				if (!selected) {
+					return;
+				}
+				editor.edit(edit => edit.replace(line.range, `#include "${selected}"`));
 				return;
 			}
-			const relativePath = vscode.workspace.asRelativePath(fullPaths[0], false);
-			edit.replace(line.range, `#include "${relativePath}"`);
+			editor.edit(edit => edit.replace(line.range, `#include "${fullPaths[0]}"`));
 		}
+	} else {
+		vscode.window.showErrorMessage("No include statement found in line");
 	}
 }
 
@@ -35,4 +41,4 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 // This method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() { }

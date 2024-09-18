@@ -10,3 +10,27 @@
 
 </v-clicks>
 
+---
+
+# The VSCode window
+
+<img src="/images/vscode-ide.png" class="w150" />
+
+---
+
+# VS Code extensions for C/C++ development
+<v-clicks>
+
+1. Microsoft VS Code C/C++ Tools <img src="/images/extension-cpp.png" />
+    Gives us syntax highlighting, compilation and debugging support
+
+</v-clicks>
+
+---
+---
+# Example
+
+Using the VS Code documentation for C++ development
+
+https://code.visualstudio.com/docs/cpp/config-linux
+
