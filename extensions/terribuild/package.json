@@ -9,13 +9,64 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "workspaceContains:terribuild.json"
+  ],
   "main": "./out/extension.js",
   "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "terribuild",
+          "title": "Terribuild",
+          "icon": "resources/terribuild.svg"
+        }
+      ]
+    },
+    "views": {
+      "terribuild": [
+        {
+          "id": "terribuild-binaries",
+          "name": "Terribuild",
+          "icon": "resources/terribuild.svg",
+          "contextualTitle": "Terribuild binaries"
+        }
+      ]
+    },
+    "menus": {
+      "view/item/context": [
+        {
+          "command": "terribuild.buildBinary",
+          "group": "inline",
+          "when": "view == terribuild-binaries"
+        },
+        {
+          "command": "terribuild.debugBinary",
+          "group": "inline",
+          "when": "view == terribuild-binaries"
+        }
+      ]
+    },
     "commands": [
       {
-        "command": "terribuild.helloWorld",
-        "title": "Hello World"
+        "command": "terribuild.buildBinary",
+        "title": "Build",
+        "category": "Terribuild"
+      },
+      {
+        "command": "terribuild.debugBinary",
+        "title": "Debug",
+        "category": "Terribuild"
+      },
+      {
+        "command": "terribuild.selectedBinary",
+        "title": "Currently selected binary",
+        "category": "Terribuild"
+      },
+      {
+        "command": "terribuild.selectBinary",
+        "title": "Select binary",
+        "category": "Terribuild"
       }
     ]
   },
