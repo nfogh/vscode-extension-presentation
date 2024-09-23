@@ -28,7 +28,7 @@ export class TerribuildTreeDataProvider implements vscode.TreeDataProvider<Depen
         const fileData = await vscode.workspace.fs.readFile(vscode.Uri.joinPath(vscode.workspace.workspaceFolders[0].uri, "terribuild.json"));
         const terribuildConfig = await parseTerribuildJson(fileData.toString());
 
-        const binaries = terribuildConfig.binaries.map(binary => new Dependency(binary === this.selectedBinary ? "[x] " + binary : binary));
+        const binaries = Array.from(terribuildConfig.binaries.keys()).map(binary => new Dependency(binary === this.selectedBinary ? "[x] " + binary : binary));
 
         return binaries;
     }
