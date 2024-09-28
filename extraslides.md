@@ -34,3 +34,23 @@ Using the VS Code documentation for C++ development
 
 https://code.visualstudio.com/docs/cpp/config-linux
 
+
+---
+---
+
+# A case study
+
+<v-clicks>
+
+## Legacy IDEs
+
+- Often feels like working in the middle ages
+- Doesn't offer much customization
+
+## Custom build systems
+
+- Can be difficult to understand and customize
+- Puts build artifacts in "odd" places
+- No integration with industry standard tools
+
+</v-clicks>
